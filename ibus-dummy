@@ -1,0 +1,19 @@
+Package: ibus-dummy
+Architecture: all
+Version: 91.5.26-4
+Multi-Arch: foreign
+Priority: optional
+Section: utils
+Origin: Ubuntu
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: Debian Input Method Team <debian-input-method@lists.debian.org>
+Bugs: https://bugs.launchpad.net/ubuntu/+filebug
+Depends:
+Provides: ibus
+Recommends: ibus-gtk, ibus-gtk3, ibus-gtk4, im-config
+Suggests: ibus-clutter, ibus-doc
+Breaks: ibus-anthy (<< 1.5.3-2), ibus-data (<< 1.5.21-4~exp1), ibus-el (<< 0.3.2-2), ibus-googlepinyin (<< 0.1.2-2)
+Replaces: ibus-data (<< 1.5.21-4~exp1)
+Homepage: https://github.com/ibus/ibus
+Description: Intelligent Input Bus - core (equ-dummy)
+Task: ubuntu-desktop-minimal, ubuntu-desktop, ubuntu-budgie-desktop, ubuntu-budgie-desktop-raspi

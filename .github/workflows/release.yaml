@@ -1,0 +1,41 @@
+name: Release
+on:
+  push:
+    branches:
+      - 'master'
+
+  workflow_dispatch:
+    inputs:
+      version:
+        description: VERSION
+        required: true
+
+env:
+  pkgn: ibus
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+      # with:
+      #   submodules: true
+
+    - name: Install equivs
+      run: sudo apt-get install -y equivs
+
+    - name: Build 
+      run: equivs-build $pkgn-dummy
+
+    - name: Upload release for Debian
+      uses: cloudsmith-io/action@master
+      with:
+        api-key: ${{ secrets.CLOUDSMITH_API_KEY }}
+        command: push
+        format: deb
+        owner: suntong
+        repo: repo
+        distro: any-distro
+        release: any-version
+        file: $pkgn-dummy_*_all.deb
