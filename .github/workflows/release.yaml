@@ -23,7 +23,9 @@ jobs:
       #   submodules: true
 
     - name: Install equivs
-      run: sudo apt-get install -y equivs
+      uses: awalsh128/cache-apt-pkgs-action@latest
+      with:
+        packages: equivs
 
     - name: Build 
       run: equivs-build $pkgn-dummy
@@ -38,4 +40,5 @@ jobs:
         repo: repo
         distro: any-distro
         release: any-version
+        republish: "true" # needed ONLY if version is not changing
         file: $pkgn-dummy_*_all.deb
